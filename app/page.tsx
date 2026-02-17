@@ -1,12 +1,14 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, ArrowRight, Sparkles } from 'lucide-react';
+import { ChevronDown, ArrowRight, Sparkles, Menu } from 'lucide-react';
 import Link from 'next/link';
 import CompanyCard from '@/components/CompanyCard';
 import SmoothScroll from '@/components/SmoothScroll';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { MobileMenu } from '@/components/MobileMenu';
 import { companies } from '@/lib/companies';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -23,6 +25,7 @@ const staggerContainer = {
 };
 
 export default function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -36,7 +39,8 @@ export default function Home() {
   return (
     <>
       <SmoothScroll />
-      <div className="min-h-screen bg-white">
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+      <div className="min-h-screen bg-white dark:bg-zinc-950">
         {/* Floating Navigation */}
         <motion.nav
           initial={{ y: -100, opacity: 0 }}
@@ -44,66 +48,105 @@ export default function Home() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-2xl px-6"
         >
-          <div className="bg-white/70 backdrop-blur-xl border border-zinc-200/50 rounded-full px-6 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-between">
-            <Link href="/" className="text-sm font-bold tracking-tight text-zinc-900">
+          <div className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-zinc-200/50 dark:border-zinc-700/50 rounded-full px-6 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] flex items-center justify-between">
+            <Link href="/" className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               PORTFOLIO
             </Link>
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               <a
                 href="#companies"
-                className="text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
               >
                 Companies
               </a>
               <a
                 href="#about"
-                className="text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
               >
                 About
               </a>
+              <ThemeToggle />
               <a
                 href="#companies"
-                className="px-4 py-2 bg-zinc-900 text-white text-xs font-medium rounded-full hover:bg-zinc-800 transition-all hover:scale-105"
+                className="px-4 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-medium rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all hover:scale-105"
               >
                 Explore
               </a>
             </div>
+            <div className="md:hidden flex items-center gap-3">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5 text-zinc-900 dark:text-zinc-100" />
+              </button>
+            </div>
           </div>
         </motion.nav>
 
-        {/* Hero Section with Parallax */}
+        {/* Hero Section with Enhanced Background */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-zinc-50 to-white"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-zinc-50 via-white to-zinc-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950"
         >
-          {/* Animated Background Grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
+          {/* Animated Background Pattern */}
+          <div className="absolute inset-0">
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]" />
+            
+            {/* Radial Gradient Overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_50%)]" />
+            
+            {/* Dot Pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle,#00000008_1px,transparent_1px)] dark:bg-[radial-gradient(circle,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px]" />
+          </div>
           
-          {/* Gradient Orbs */}
+          {/* Enhanced Gradient Orbs */}
           <motion.div
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
+              opacity: [0.15, 0.25, 0.15],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
             }}
             transition={{
-              duration: 8,
+              duration: 12,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="absolute top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl"
+            className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
               scale: [1.2, 1, 1.2],
-              opacity: [0.3, 0.5, 0.3],
+              opacity: [0.15, 0.25, 0.15],
+              x: [0, -50, 0],
+              y: [0, -30, 0],
             }}
             transition={{
-              duration: 8,
+              duration: 12,
               repeat: Infinity,
               ease: 'easeInOut',
-              delay: 1,
+              delay: 2,
             }}
-            className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-gradient-to-r from-orange-400/30 to-pink-400/30 rounded-full blur-3xl"
+            className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/20 via-red-500/20 to-pink-500/20 dark:from-orange-500/10 dark:via-red-500/10 dark:to-pink-500/10 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.1, 0.2, 0.1],
+              x: [0, -30, 0],
+              y: [0, 50, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 4,
+            }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 dark:from-cyan-500/8 dark:via-blue-500/8 dark:to-indigo-500/8 rounded-full blur-3xl"
           />
 
           <motion.div
@@ -115,10 +158,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm mb-8 shadow-sm"
             >
               <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-medium text-zinc-700 uppercase tracking-wider">
+              <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                 Trusted by Industry Leaders
               </span>
             </motion.div>
@@ -128,11 +171,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-zinc-900 mb-6 leading-[0.9]"
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-100 mb-6 leading-[0.9]"
             >
               Building the
               <br />
-              <span className="bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-400 dark:from-zinc-100 dark:via-zinc-400 dark:to-zinc-600 bg-clip-text text-transparent">
                 Future
               </span>{' '}
               Together
@@ -143,7 +186,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto leading-relaxed mb-12"
+              className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-12"
             >
               Koleksi perusahaan terkemuka yang mendefinisikan standar industri melalui
               inovasi, kualitas, dan kepercayaan berkelanjutan.
@@ -160,7 +203,7 @@ export default function Home() {
                 href="#companies"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-zinc-900 text-white rounded-full font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                className="group px-8 py-4 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-full font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
               >
                 Lihat Perusahaan
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -169,7 +212,7 @@ export default function Home() {
                 href="#about"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white border-2 border-zinc-200 text-zinc-900 rounded-full font-medium hover:bg-zinc-50 hover:border-zinc-300 transition-all"
+                className="px-8 py-4 bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-full font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-600 transition-all"
               >
                 Pelajari Lebih Lanjut
               </motion.a>
@@ -185,7 +228,7 @@ export default function Home() {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="flex flex-col items-center gap-2 text-zinc-400"
+                className="flex flex-col items-center gap-2 text-zinc-400 dark:text-zinc-600"
               >
                 <span className="text-xs font-medium uppercase tracking-wider">Scroll</span>
                 <ChevronDown className="w-5 h-5" />
@@ -195,14 +238,14 @@ export default function Home() {
         </section>
 
         {/* Stats Section - Minimalist */}
-        <section className="border-y border-zinc-100 bg-white">
+        <section className="border-y border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
           <div className="max-w-7xl mx-auto px-6 py-16">
             <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               variants={staggerContainer}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-zinc-100"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-zinc-100 dark:divide-zinc-800"
             >
               {[
                 { value: '4', label: 'Perusahaan' },
@@ -224,11 +267,11 @@ export default function Home() {
                       stiffness: 100,
                       delay: index * 0.1,
                     }}
-                    className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-2"
+                    className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-2"
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-xs md:text-sm font-medium text-zinc-500 uppercase tracking-widest">
+                  <div className="text-xs md:text-sm font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -238,7 +281,7 @@ export default function Home() {
         </section>
 
         {/* Companies Section */}
-        <section id="companies" className="py-32 px-6 bg-zinc-50">
+        <section id="companies" className="py-32 px-6 bg-zinc-50 dark:bg-zinc-900">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -249,10 +292,10 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="max-w-2xl"
               >
-                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 mb-4">
+                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">
                   Ekosistem Kami
                 </h2>
-                <p className="text-lg text-zinc-600">
+                <p className="text-lg text-zinc-600 dark:text-zinc-400">
                   Sinergi lintas industri untuk menciptakan dampak nyata.
                 </p>
               </motion.div>
@@ -261,7 +304,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="hidden md:block h-px flex-1 bg-gradient-to-r from-zinc-300 to-transparent ml-12 mb-6"
+                className="hidden md:block h-px flex-1 bg-gradient-to-r from-zinc-300 dark:from-zinc-700 to-transparent ml-12 mb-6"
               />
             </div>
 
@@ -283,7 +326,7 @@ export default function Home() {
         </section>
 
         {/* Gallery Section - Modern Bento Grid */}
-        <section className="py-32 px-6 bg-white">
+        <section className="py-32 px-6 bg-white dark:bg-zinc-950">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <motion.div
@@ -292,10 +335,10 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 mb-4">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">
                 Portofolio Visual
               </h2>
-              <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
                 Melihat lebih dekat karya dan pencapaian dari setiap perusahaan dalam ekosistem kami
               </p>
             </motion.div>
@@ -307,7 +350,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-square"
+                className="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-square"
               >
                 <img
                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
@@ -328,7 +371,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-square"
+                className="group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-square"
               >
                 <img
                   src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80"
@@ -344,7 +387,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-square"
+                className="group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-square"
               >
                 <img
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80"
@@ -360,7 +403,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-video"
+                className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-video"
               >
                 <img
                   src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80"
@@ -381,7 +424,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-square"
+                className="group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-square"
               >
                 <img
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80"
@@ -397,7 +440,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-square"
+                className="group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-square"
               >
                 <img
                   src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80"
@@ -413,7 +456,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-zinc-100 aspect-video"
+                className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-zinc-100 dark:bg-zinc-800 aspect-video"
               >
                 <img
                   src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80"
@@ -432,7 +475,7 @@ export default function Home() {
         </section>
 
         {/* About Section - Asymmetric */}
-        <section id="about" className="py-32 bg-white px-6">
+        <section id="about" className="py-32 bg-white dark:bg-zinc-900 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -441,15 +484,15 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 mb-8 leading-tight">
+                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-8 leading-tight">
                   Lebih dari
                   <br />
                   sekadar{' '}
-                  <span className="bg-gradient-to-r from-zinc-400 to-zinc-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-zinc-400 to-zinc-600 dark:from-zinc-500 dark:to-zinc-300 bg-clip-text text-transparent">
                     bisnis biasa
                   </span>
                 </h2>
-                <div className="space-y-6 text-lg text-zinc-600 leading-relaxed">
+                <div className="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   <p>
                     Kami adalah kolektif strategis yang bergerak di sektor agribisnis,
                     konstruksi, teknologi, dan perdagangan. Filosofi kami sederhana:
@@ -498,7 +541,7 @@ export default function Home() {
         </section>
 
         {/* Features Section with Images */}
-        <section className="py-32 px-6 bg-zinc-50">
+        <section className="py-32 px-6 bg-zinc-50 dark:bg-zinc-950">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -506,10 +549,10 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 mb-4">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">
                 Keunggulan Kami
               </h2>
-              <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
                 Kombinasi sempurna antara pengalaman, inovasi, dan dedikasi
               </p>
             </motion.div>
@@ -536,8 +579,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-3">Inovasi Berkelanjutan</h3>
-                <p className="text-zinc-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">Inovasi Berkelanjutan</h3>
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Terus berinovasi dengan teknologi terkini untuk memberikan solusi terbaik
                 </p>
               </motion.div>
@@ -563,8 +606,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-3">Tim Profesional</h3>
-                <p className="text-zinc-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">Tim Profesional</h3>
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Didukung oleh tim ahli yang berpengalaman di bidangnya masing-masing
                 </p>
               </motion.div>
@@ -590,8 +633,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-3">Kualitas Terjamin</h3>
-                <p className="text-zinc-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">Kualitas Terjamin</h3>
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Standar kualitas tinggi dalam setiap produk dan layanan yang kami berikan
                 </p>
               </motion.div>
@@ -605,10 +648,10 @@ export default function Home() {
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="py-32 px-6 bg-zinc-900 text-white text-center relative overflow-hidden"
+          className="py-32 px-6 bg-zinc-900 dark:bg-zinc-950 text-white text-center relative overflow-hidden"
         >
           {/* Background Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:64px_64px]" />
 
           <div className="relative z-10 max-w-4xl mx-auto">
             <motion.h2
@@ -617,7 +660,7 @@ export default function Home() {
             >
               Siap Berkolaborasi?
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="text-xl text-zinc-400 dark:text-zinc-500 mb-12 max-w-2xl mx-auto">
               Mari diskusikan bagaimana ekosistem kami dapat membantu pertumbuhan bisnis
               Anda.
             </motion.p>
@@ -626,7 +669,7 @@ export default function Home() {
               href="#companies"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-10 py-5 bg-white text-zinc-900 rounded-full font-bold text-lg hover:bg-zinc-100 transition-all shadow-2xl"
+              className="inline-flex items-center gap-2 px-10 py-5 bg-white dark:bg-zinc-100 text-zinc-900 rounded-full font-bold text-lg hover:bg-zinc-100 dark:hover:bg-zinc-200 transition-all shadow-2xl"
             >
               Hubungi Kami
               <ArrowRight className="w-5 h-5" />
@@ -635,23 +678,23 @@ export default function Home() {
         </motion.section>
 
         {/* Footer - Clean */}
-        <footer className="py-12 px-6 border-t border-zinc-100 bg-white">
+        <footer className="py-12 px-6 border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-950">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-8">
-                <Link href="/" className="text-sm font-bold tracking-tight text-zinc-900">
+                <Link href="/" className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                   PORTFOLIO
                 </Link>
-                <div className="hidden md:flex gap-6 text-sm text-zinc-600">
-                  <a href="#companies" className="hover:text-zinc-900 transition-colors">
+                <div className="hidden md:flex gap-6 text-sm text-zinc-600 dark:text-zinc-400">
+                  <a href="#companies" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
                     Companies
                   </a>
-                  <a href="#about" className="hover:text-zinc-900 transition-colors">
+                  <a href="#about" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
                     About
                   </a>
                 </div>
               </div>
-              <p className="text-sm text-zinc-500">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 © 2026 Portfolio Group. Designed with precision.
               </p>
             </div>
