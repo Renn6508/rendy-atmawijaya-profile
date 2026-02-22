@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, ArrowRight, Sparkles, Menu } from 'lucide-react';
+import { ChevronDown, ArrowRight, Sparkles, Menu, Mail, MapPin, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import CompanyCard from '@/components/CompanyCard';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -802,44 +802,84 @@ export default function Home() {
           </div>
         </section>
 
-        
+        <section id="contact" className="py-24 px-4 md:px-8 border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-7xl mx-auto bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden shadow-sm"
+          >
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Left Column: Heading & Intro */}
+              <div className="space-y-8">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+                  Siap untuk <br/>
+                  <span className="text-zinc-500 dark:text-zinc-400">berkolaborasi?</span>
+                </h2>
+                <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-md leading-relaxed">
+                  Mari diskusikan bagaimana ekosistem bisnis kami dapat memberikan nilai tambah dan solusi untuk pertumbuhan perusahaan Anda.
+                </p>
+                
+                {/* Primary Action Button (High Contrast) */}
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="mailto:emailanda@perusahaan.com"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-full font-bold text-lg hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-xl w-max"
+                >
+                  Mulai Diskusi
+                  <ArrowRight className="w-5 h-5" />
+                </motion.a>
+              </div>
 
-        {/* CTA Section - High Contrast */}
-        <motion.section
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="py-32 px-6 bg-zinc-900 dark:bg-zinc-950 text-white text-center relative overflow-hidden"
-        >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:64px_64px]" />
+              {/* Right Column: Contact Detail Cards */}
+              <div className="flex flex-col gap-5">
+                
+                {/* Email Card */}
+                <a href="mailto:emailanda@perusahaan.com" className="group flex items-center gap-6 p-6 rounded-3xl bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 transition-all shadow-sm">
+                  <div className="w-14 h-14 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Mail className="w-6 h-6 text-zinc-900 dark:text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">Email Langsung</p>
+                    <p className="text-lg md:text-xl font-medium text-zinc-900 dark:text-zinc-100 group-hover:underline underline-offset-4 decoration-zinc-400">emailanda@perusahaan.com</p>
+                  </div>
+                </a>
 
-          <div className="relative z-10 max-w-4xl mx-auto">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-5xl md:text-7xl font-bold tracking-tighter mb-8"
-            >
-              Siap Berkolaborasi?
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-xl text-zinc-400 dark:text-zinc-500 mb-12 max-w-2xl mx-auto">
-              Mari diskusikan bagaimana ekosistem kami dapat membantu pertumbuhan bisnis
-              Anda.
-            </motion.p>
-            <motion.a
-              variants={fadeInUp}
-              href="#companies"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-10 py-5 bg-white dark:bg-zinc-100 text-zinc-900 rounded-full font-bold text-lg hover:bg-zinc-100 dark:hover:bg-zinc-200 transition-all shadow-2xl"
-            >
-              Hubungi Kami
-              <ArrowRight className="w-5 h-5" />
-            </motion.a>
-          </div>
-        </motion.section>
+                {/* LinkedIn Card */}
+                <a href="https://linkedin.com/in/usernameanda" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-6 p-6 rounded-3xl bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 transition-all shadow-sm">
+                  <div className="w-14 h-14 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Linkedin className="w-6 h-6 text-zinc-900 dark:text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">LinkedIn</p>
+                    <p className="text-lg md:text-xl font-medium text-zinc-900 dark:text-zinc-100 group-hover:underline underline-offset-4 decoration-zinc-400">Koneksi Profesional</p>
+                  </div>
+                </a>
+
+                {/* HQ Location Card (Static) */}
+                <div className="flex items-center gap-6 p-6 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-sm">
+                  <div className="w-14 h-14 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6 text-zinc-900 dark:text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">Kantor Pusat</p>
+                    <p className="text-base md:text-lg font-medium text-zinc-900 dark:text-zinc-100">
+                      Sudirman Central Business District (SCBD)<br />
+                      Jakarta, Indonesia
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </motion.div>
+        </section>
         {/* Trusted Partners / Social Proof Marquee Section */}
-        <section className="py-24 px-6 border-y border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
+        <section className="py-8 px-6 border-y border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <motion.div
