@@ -280,6 +280,155 @@ export default function Home() {
           </div>
         </section>
 
+
+        {/* About Section - Asymmetric */}
+        <section id="about" className="py-32 bg-white dark:bg-zinc-900 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-8 leading-tight">
+                  Lebih dari
+                  <br />
+                  sekadar{' '}
+                  <span className="bg-gradient-to-r from-zinc-400 to-zinc-600 dark:from-zinc-500 dark:to-zinc-300 bg-clip-text text-transparent">
+                    bisnis biasa
+                  </span>
+                </h2>
+                <div className="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  <p>
+                    Kami adalah kolektif strategis yang bergerak di sektor agribisnis,
+                    konstruksi, teknologi, dan perdagangan. Filosofi kami sederhana:
+                    melakukan hal yang benar, dengan cara yang benar.
+                  </p>
+                  <p>
+                    Setiap entitas dalam portofolio kami beroperasi dengan otonomi penuh
+                    namun terikat oleh satu visi: memberikan nilai tambah yang berkelanjutan
+                    bagi masyarakat dan mitra bisnis.
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative aspect-square rounded-3xl overflow-hidden"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+                  alt="Team collaboration"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
+                <div className="absolute bottom-8 left-8 text-white">
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                    className="text-7xl font-bold mb-2"
+                  >
+                    2026
+                  </motion.div>
+                  <p className="text-sm text-white/80">Tahun Pertumbuhan</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Philosophy & Vision Section - The "Why" */}
+        <section id="philosophy" className="py-32 px-6 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-800">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-12 gap-16 items-center">
+              
+              {/* Left Column: The Main "Why" */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="lg:col-span-6"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 mb-8 shadow-sm">
+                  <span className="text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">Filosofi Bisnis</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6 leading-[1.1]">
+                  Empat entitas. <br />
+                  Satu{' '}
+                  <span className="bg-gradient-to-r from-zinc-500 to-zinc-800 dark:from-zinc-400 dark:to-zinc-100 bg-clip-text text-transparent">
+                    DNA yang sama.
+                  </span>
+                </h2>
+                <div className="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  <p>
+                    Keempat usaha ini beroperasi di sektor yang berbeda dan menghadapi tantangan uniknya masing-masing. Namun, mereka tidak berdiri sendiri. Semuanya lahir dari satu benang merah yang sama.
+                  </p>
+                  <p>
+                    Visi kami bukan sekadar mendominasi pasar, melainkan membangun ekosistem bisnis yang <strong>memberdayakan manusia</strong> dan menciptakan <strong>solusi yang berkelanjutan</strong> untuk jangka panjang.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Right Column: Core Values / DNA Grid */}
+              <div className="lg:col-span-6 grid sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    title: "Integritas Bertumbuh",
+                    desc: "Kepercayaan adalah fondasi. Kami membangun operasional yang transparan dan etis di semua lini.",
+                    delay: 0.2
+                  },
+                  {
+                    title: "Inovasi Adaptif",
+                    desc: "Tidak takut merombak cara lama demi menemukan efisiensi dan nilai tambah yang lebih besar.",
+                    delay: 0.3
+                  },
+                  {
+                    title: "Fokus Ekosistem",
+                    desc: "Kesuksesan satu perusahaan harus mampu memberikan dampak positif bagi perusahaan lain dan mitranya.",
+                    delay: 0.4
+                  },
+                  {
+                    title: "Dampak Manusia",
+                    desc: "Pada akhirnya, bisnis adalah tentang manusia. Mengutamakan kesejahteraan tim dan kepuasan pelanggan.",
+                    delay: 0.5
+                  }
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: item.delay }}
+                    className="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors shadow-sm"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-6">
+                      <Sparkles className="w-5 h-5 text-zinc-900 dark:text-zinc-100" />
+                    </div>
+                    <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* Companies Section */}
         <section id="companies" className="py-32 px-6 bg-zinc-50 dark:bg-zinc-900">
           <div className="max-w-7xl mx-auto">
@@ -321,6 +470,81 @@ export default function Home() {
                   <CompanyCard company={company} index={index} />
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Founder / Orchestrator Section */}
+        <section id="founder" className="py-32 px-6 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Left Column: Portrait Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-2xl"
+              >
+                {/* Ganti URL gambar di bawah dengan foto profesional Anda */}
+                <img
+                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80" 
+                  alt="Founder Portrait"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                {/* Dark gradient overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-zinc-900/20 to-transparent" />
+                <div className="absolute bottom-8 left-8 text-white">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-4 border border-white/20">
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-1">[Nama Anda]</h3>
+                  <p className="text-sm text-zinc-300 uppercase tracking-widest font-medium">Founder & CEO</p>
+                </div>
+              </motion.div>
+
+              {/* Right Column: Copywriting & Vision */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col justify-center"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 w-max mb-8">
+                  <span className="text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">
+                    The Orchestrator
+                  </span>
+                </div>
+                
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-8 leading-[1.1]">
+                  Visi besar membutuhkan{' '}
+                  <span className="bg-gradient-to-r from-zinc-500 to-zinc-800 dark:from-zinc-400 dark:to-zinc-100 bg-clip-text text-transparent">
+                    eksekusi yang tepat.
+                  </span>
+                </h2>
+                
+                <div className="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10">
+                  <p>
+                    Sebagai pendiri dan pemimpin dari empat entitas bisnis ini, peran saya adalah memastikan setiap perusahaan tidak hanya berkembang di jalurnya masing-masing, tetapi juga saling memperkuat satu sama lain membentuk sebuah ekosistem yang solid.
+                  </p>
+                  <p>
+                    Saya percaya bahwa bisnis yang tangguh dibangun di atas tiga pilar utama: <strong>integritas tanpa kompromi, inovasi yang berani, dan investasi pada manusia</strong>. Ini adalah komitmen saya untuk menciptakan nilai dan dampak nyata bagi industri.
+                  </p>
+                </div>
+
+                {/* Personal Quote */}
+                <div className="pl-6 border-l-4 border-zinc-200 dark:border-zinc-700">
+                  <p className="text-xl md:text-2xl font-medium text-zinc-900 dark:text-zinc-100 italic mb-4 leading-snug">
+                    "Keberhasilan bukan sekadar tentang berapa banyak bisnis yang kita bangun, melainkan seberapa besar nilai tambah yang kita ciptakan untuk ekosistem."
+                  </p>
+                  <p className="text-sm font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-wider">
+                    — [Nama Anda], 2026
+                  </p>
+                </div>
+              </motion.div>
+
             </div>
           </div>
         </section>
@@ -474,71 +698,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Section - Asymmetric */}
-        <section id="about" className="py-32 bg-white dark:bg-zinc-900 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-8 leading-tight">
-                  Lebih dari
-                  <br />
-                  sekadar{' '}
-                  <span className="bg-gradient-to-r from-zinc-400 to-zinc-600 dark:from-zinc-500 dark:to-zinc-300 bg-clip-text text-transparent">
-                    bisnis biasa
-                  </span>
-                </h2>
-                <div className="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  <p>
-                    Kami adalah kolektif strategis yang bergerak di sektor agribisnis,
-                    konstruksi, teknologi, dan perdagangan. Filosofi kami sederhana:
-                    melakukan hal yang benar, dengan cara yang benar.
-                  </p>
-                  <p>
-                    Setiap entitas dalam portofolio kami beroperasi dengan otonomi penuh
-                    namun terikat oleh satu visi: memberikan nilai tambah yang berkelanjutan
-                    bagi masyarakat dan mitra bisnis.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative aspect-square rounded-3xl overflow-hidden"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                  alt="Team collaboration"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
-                <div className="absolute bottom-8 left-8 text-white">
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                    className="text-7xl font-bold mb-2"
-                  >
-                    2026
-                  </motion.div>
-                  <p className="text-sm text-white/80">Tahun Pertumbuhan</p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        
 
         {/* Features Section with Images */}
         <section className="py-32 px-6 bg-zinc-50 dark:bg-zinc-950">
@@ -642,6 +802,8 @@ export default function Home() {
           </div>
         </section>
 
+        
+
         {/* CTA Section - High Contrast */}
         <motion.section
           initial="initial"
@@ -676,6 +838,78 @@ export default function Home() {
             </motion.a>
           </div>
         </motion.section>
+        {/* Trusted Partners / Social Proof Marquee Section */}
+        <section className="py-24 px-6 border-y border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">
+                Dipercaya oleh perusahaan dan institusi terkemuka
+              </p>
+            </motion.div>
+
+            {/* Infinite Marquee Wrapper */}
+            <div 
+              className="relative flex w-full overflow-hidden"
+              style={{ 
+                maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+              }}
+            >
+              <motion.div
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  ease: "linear", 
+                  duration: 30 // Semakin besar angka, semakin lambat gerakannya
+                }}
+                className="flex items-center gap-16 md:gap-24 min-w-max pr-16 md:pr-24"
+              >
+                {/* Kita menduplikasi list 2 kali agar animasinya berputar mulus (seamless loop) */}
+                {[...Array(2)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-16 md:gap-24">
+                    
+                    {/* Placeholder Logo 1 */}
+                    <div className="flex items-center gap-3 text-zinc-400 dark:text-zinc-600 grayscale hover:grayscale-0 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 cursor-pointer">
+                      <Sparkles className="w-8 h-8" />
+                      <span className="text-2xl font-bold tracking-tighter">TechNova</span>
+                    </div>
+                    
+                    {/* Placeholder Logo 2 */}
+                    <div className="flex items-center gap-3 text-zinc-400 dark:text-zinc-600 grayscale hover:grayscale-0 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 cursor-pointer">
+                      <Menu className="w-8 h-8" />
+                      <span className="text-2xl font-black tracking-tight uppercase">BumiKarya</span>
+                    </div>
+                    
+                    {/* Placeholder Logo 3 */}
+                    <div className="flex items-center gap-3 text-zinc-400 dark:text-zinc-600 grayscale hover:grayscale-0 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 cursor-pointer">
+                      <ArrowRight className="w-8 h-8" />
+                      <span className="text-2xl font-serif italic font-bold">AgriSynergy</span>
+                    </div>
+                    
+                    {/* Placeholder Logo 4 */}
+                    <div className="flex items-center gap-3 text-zinc-400 dark:text-zinc-600 grayscale hover:grayscale-0 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 cursor-pointer">
+                      <ChevronDown className="w-8 h-8" />
+                      <span className="text-2xl font-bold tracking-widest">NEXUS.</span>
+                    </div>
+                    
+                    {/* Placeholder Logo 5 */}
+                    <div className="flex items-center gap-3 text-zinc-400 dark:text-zinc-600 grayscale hover:grayscale-0 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 cursor-pointer">
+                      <div className="w-7 h-7 rounded-full border-4 border-current"></div>
+                      <span className="text-2xl font-bold">GlobalTrade</span>
+                    </div>
+
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
         {/* Footer - Clean */}
         <footer className="py-12 px-6 border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-950">
