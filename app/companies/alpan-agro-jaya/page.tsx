@@ -1,280 +1,247 @@
-import Image from 'next/image';
-import Navbar from '@/components/Navbar';
-import Icon from '@/components/Icon';
+"use client";
+import { Sprout, Users, Target, ShieldCheck, Globe2, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // <-- CSS untuk animasi
+import Image from "next/image";
+import Navbar from "../alpan-agro-jaya/components/layout/Navbar";
 
-export const metadata = {
-  title: 'Alpan Agro Jaya - Solusi Pertanian Modern untuk Indonesia',
-  description: 'Perusahaan agribisnis terdepan yang menghadirkan inovasi dan keberlanjutan dalam sektor pertanian Indonesia.',
-};
+import ServiceRibbon from "../alpan-agro-jaya/components/section/ServiceRibbon";
+import ServicesGallery from "../alpan-agro-jaya/components/ui/Servicesgallery";
+import CardContact from "../alpan-agro-jaya/components/ui/ContactData";
+import AboutContent from "../alpan-agro-jaya/components/ui/AboutContent";
+import Footer from "../alpan-agro-jaya/components/layout/Footer";
+import Link from "next/link";
 
-export default function AlpanAgroJayaPage() {
+export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,        // durasi animasi (ms)
+      easing: 'ease-in-out', // gaya transisi
+      once: true,           // animasi hanya berjalan sekali
+      mirror: false         // jangan animasi ulang saat scroll ke atas
+    });
+  }, []);
   return (
-    <div className="min-h-screen bg-zinc-50">
-      <Navbar companyName="Alpan Agro Jaya" />
+    <div className="overflow-x-hidden">
+      <Navbar />
+      <section className="relative min-h-screen md:h-screen flex items-center text-white z-20 overflow-visible py-20 md:py-0">
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]" />
-        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90 mb-6">
-                Agribisnis
-              </div>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-                Alpan Agro Jaya
-              </h1>
-              <p className="text-2xl text-green-200 mb-8">
-                Solusi Pertanian Modern untuk Indonesia
-              </p>
-              <p className="text-lg text-green-100 leading-relaxed mb-8">
-                Perusahaan agribisnis terdepan yang menghadirkan inovasi dan keberlanjutan dalam sektor pertanian Indonesia.
-              </p>
-              <a 
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-900 rounded-lg font-medium hover:bg-green-50 transition-colors"
-              >
-                Hubungi Kami
-                <Icon name="arrow" className="w-4 h-4" />
-              </a>
-            </div>
-            <div className="relative h-80 md:h-96 bg-white/5 backdrop-blur-sm rounded-2xl p-8 flex items-center justify-center">
-              <div className="relative w-full h-full">
-                <Image
-                  src="/assets/companies/Alpan-agro-jaya.jpeg"
-                  alt="Alpan Agro Jaya logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Image
+            src="/assets/background.png"
+            alt="Farm Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#064e3b] via-transparent to-transparent opacity-90" />
         </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="border-b border-zinc-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-zinc-900 mb-2">500+</div>
-              <div className="text-zinc-600">Petani Mitra</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-zinc-900 mb-2">50+</div>
-              <div className="text-zinc-600">Produk Unggulan</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-zinc-900 mb-2">15+</div>
-              <div className="text-zinc-600">Kota Jangkauan</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="max-w-7xl mx-auto px-6 py-20">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">
-            Tentang Kami
-          </h2>
-          <p className="text-lg text-zinc-600 leading-relaxed">
-            PT Alpan Agro Jaya adalah perusahaan agribisnis yang berdedikasi untuk meningkatkan produktivitas pertanian Indonesia melalui teknologi modern dan praktik berkelanjutan. Kami menyediakan solusi lengkap mulai dari distribusi pupuk berkualitas, konsultasi pertanian profesional, hingga implementasi teknologi agrikultur terkini.
-          </p>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="border-y border-zinc-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
-              Layanan Kami
+        <div className="container mx-auto px-6 z-10 relative">
+          <div className="max-w-3xl">
+            {/* Ukuran teks adaptif: Kecil di HP, Besar di Desktop */}
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.2em] mb-4 text-emerald-300 uppercase">
+              CV. ALPAN AGRO JAYA
             </h2>
-            <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-              Solusi terbaik yang kami tawarkan untuk memenuhi kebutuhan pertanian Anda
+            <h1 className="text-3xl sm:text-4xl md:text-6xl text-white mb-6 leading-tight font-bold uppercase">
+              Solusi Agribisnis <br className="hidden md:block" />
+              <span className="text-emerald-400">Hulu ke Hilir</span>
+            </h1>
+            <p className="text-gray-200 text-sm md:text-lg mb-8 max-w-2xl leading-relaxed">
+              Meningkatkan efisiensi produk pertanian lokal dengan sistem terintegrasi,
+              melayani kebutuhan dari penyediaan sarana hingga pemasaran produk.
             </p>
+
+            {/* Tombol: Full width di HP, Auto di Desktop */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="#layanan" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded font-bold uppercase tracking-wider transition-all text-sm">
+                Layanan Kami
+              </Link>
+              <Link href="#visi-misi" className="border border-white/30 px-8 py-3 rounded font-bold hover:bg-white/10 uppercase text-sm tracking-wider transition-all">
+                Visi & Misi
+              </Link>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group p-8 bg-zinc-50 border border-zinc-200 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
-              <div className="w-14 h-14 bg-green-900 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Icon name="leaf" className="w-7 h-7 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-zinc-900 mb-3">
-                Distribusi Pupuk Premium
-              </h3>
-              <p className="text-zinc-600 leading-relaxed">
-                Menyediakan pupuk berkualitas tinggi untuk berbagai jenis tanaman dengan harga kompetitif
-              </p>
+        </div>
+
+        <ServiceRibbon />
+      </section>
+
+      {/* About section */}
+      <section id="tentang-kami" className="pt-24 md:pt-24 pb-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center text-center mb-8 md:mb-14">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+                Who We Are
+              </span>
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
             </div>
-            <div className="group p-8 bg-zinc-50 border border-zinc-200 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
-              <div className="w-14 h-14 bg-green-900 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Icon name="users" className="w-7 h-7 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-zinc-900 mb-3">
-                Konsultasi Pertanian
-              </h3>
-              <p className="text-zinc-600 leading-relaxed">
-                Tim ahli agronomi siap membantu optimalisasi hasil panen dan pengelolaan lahan
-              </p>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
+              Tentang <span className="text-emerald-600">Kami</span>
+            </h2>
+            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+          </div>
+          <AboutContent />
+        </div>
+      </section>
+
+      {/* VISI & MISI SECTION */}
+      <section id="visi-misi" className="relative pt-24 pb-24 bg-white overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(#10b981 1.5px, transparent 1.5px)', backgroundSize: '30px 30px' }}>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col items-center text-center mb-4 md:mb-8">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+                Focus & Goals
+              </span>
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
             </div>
-            <div className="group p-8 bg-zinc-50 border border-zinc-200 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
-              <div className="w-14 h-14 bg-green-900 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Icon name="cpu" className="w-7 h-7 text-white" />
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
+              Visi & <span className="text-emerald-600">Misi Kami</span>
+            </h2>
+            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <div data-aos="fade-up" className="lg:col-span-5 bg-emerald-600 rounded-3xl p-8 md:p-12 text-white shadow-xl shadow-emerald-200 relative overflow-hidden group">
+              <Target className="absolute -bottom-6 -right-6 text-white/10 group-hover:scale-110 transition-transform duration-500" size={180} />
+
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-8">
+                  <Target className="text-white" size={28} />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-emerald-100">Visi Kami</h3>
+                <p className="text-xl md:text-2xl font-bold leading-relaxed mb-6">
+                  "Meningkatkan Efisiensi Produk Industri Hulu (Petani) dan Service yang memuaskan Industri Hilir (Client)"
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-zinc-900 mb-3">
-                Teknologi Agrikultur
-              </h3>
-              <p className="text-zinc-600 leading-relaxed">
-                Implementasi IoT dan smart farming untuk pertanian presisi dan efisien
-              </p>
+            </div>
+
+            {/* --- KARTU MISI (Dibuat Terang dengan Aksen List Berwarna) --- */}
+            <div data-aos="fade-up" data-aos-delay="100" className="lg:col-span-7 bg-white border-2 border-emerald-400 rounded-3xl p-8 md:p-12 shadow-sm relative">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center">
+                  <ShieldCheck className="text-emerald-600" size={28} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 uppercase tracking-tight">Misi Strategis</h3>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                {[
+                  { title: "Pengadaan", desc: "Produksi hingga pemasaran hasil pertanian ke konsumen." },
+                  { title: "Edukasi", desc: "Saran teknologi dan praktik pertanian yang baik bagi petani." },
+                  { title: "Analisis", desc: "Strategi pemasaran tepat berdasarkan tren pasar terkini." },
+                  { title: "Pemasaran", desc: "Distribusi produk melalui saluran daring maupun luring." }
+                ].map((item, i) => (
+                  <div key={i} className="relative pl-6 border-l-2 border-emerald-100 hover:border-emerald-500 transition-colors group">
+                    <span className="absolute -left-[2px] top-0 h-0 w-[2px] bg-emerald-500 group-hover:h-full transition-all duration-300"></span>
+                    <h4 className="font-bold text-emerald-600 text-sm uppercase mb-1">{item.title}</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section id="values" className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
-            Nilai-Nilai Kami
+      <section id="layanan" className="pt-24 md:pt-24 pb-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center text-center mb-4 md:mb-8">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+                What We Do
+              </span>
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
+              Layanan <span className="text-emerald-600">Unggulan</span>
+            </h2>
+            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+          </div>
+          <ServicesGallery />
+        </div>
+      </section>
+
+      {/* <section id="partnership" className="pt-48 md:pt-32 pb-20 bg-emerald-700"> 
+       <div className="container mx-auto px-6">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-10 text-white uppercase text-center">
+            ─── Partnership ───
           </h2>
-          <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-            Prinsip yang menjadi fondasi dalam setiap langkah kami
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 bg-white border border-zinc-200 rounded-2xl text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name="check" className="w-6 h-6 text-green-900" />
-            </div>
-            <h3 className="text-xl font-semibold text-zinc-900 mb-2">Inovasi</h3>
-            <p className="text-zinc-600">Terus berinovasi dalam teknologi pertanian</p>
-          </div>
-          <div className="p-8 bg-white border border-zinc-200 rounded-2xl text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name="check" className="w-6 h-6 text-green-900" />
-            </div>
-            <h3 className="text-xl font-semibold text-zinc-900 mb-2">Keberlanjutan</h3>
-            <p className="text-zinc-600">Praktik ramah lingkungan untuk masa depan</p>
-          </div>
-          <div className="p-8 bg-white border border-zinc-200 rounded-2xl text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name="check" className="w-6 h-6 text-green-900" />
-            </div>
-            <h3 className="text-xl font-semibold text-zinc-900 mb-2">Kualitas</h3>
-            <p className="text-zinc-600">Produk dan layanan terbaik untuk petani</p>
-          </div>
-        </div>
-      </section>
+          
+       </div>
+      </section> */}
 
-      {/* Contact Section */}
-      <section id="contact" className="border-t border-zinc-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">
-                Hubungi Kami
-              </h2>
-              <p className="text-lg text-zinc-600 mb-8">
-                Kami siap membantu Anda. Jangan ragu untuk menghubungi kami melalui informasi kontak di bawah ini.
-              </p>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="mail" className="w-6 h-6 text-green-900" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-zinc-500 mb-1">Email</div>
-                    <a href="mailto:info@alpanagrojaya.com" className="text-zinc-900 hover:text-green-700 transition-colors">
-                      info@alpanagrojaya.com
-                    </a>
-                  </div>
+      <section id="kontak" className="pt-24 md:pt-24 pb-20 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center text-center mb-4 md:mb-8">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+                Get In Touch
+              </span>
+              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
+              Hubungi <span className="text-emerald-600">Tim Kami</span>
+            </h2>
+            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+          </div>
+          <div className="flex flex-col md:flex-row max-w-6xl mx-auto items-center">
+
+            {/* SISI KIRI: KARTU WHATSAPP */}
+            <div data-aos="fade-up" className="flex flex-col gap-4 justify-start -mt-35 md:w-1/2 p-4 w-full">
+              <a
+                href="https://wa.me/6282277888936?text=Halo%20Admin,%20saya%20ingin%20bertanya%20mengenai%20layanan%20Anda."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden bg-white p-10 rounded-3xl shadow-lg border border-emerald-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center"
+              >
+                {/* Dekorasi Background */}
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-50 rounded-full transition-transform group-hover:scale-150 duration-500"></div>
+
+                {/* Icon WhatsApp */}
+                <div className="relative z-10 bg-emerald-100 p-5 rounded-2xl mb-6 group-hover:bg-emerald-500 transition-colors duration-300">
+                  <svg
+                    className="w-12 h-12 text-emerald-600 group-hover:text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 4.754a8.117 8.117 0 01-3.893-1.003L3 19.444l1.314-4.806a8.125 8.125 0 01-1.121-4.143c0-4.495 3.655-8.15 8.15-8.15a8.15 8.15 0 018.15 8.15c0 4.495-3.655 8.15-8.15 8.15m0-17.75C6.304 1.386 1.386 6.304 1.386 12.6c0 2.016.526 3.987 1.523 5.722L1 23l4.823-1.264a11.196 11.196 0 005.776 1.586h.005c6.215 0 11.272-5.057 11.272-11.272s-5.057-11.272-11.272-11.272" />
+                  </svg>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="phone" className="w-6 h-6 text-green-900" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-zinc-500 mb-1">Telepon</div>
-                    <a href="tel:+622112345678" className="text-zinc-900 hover:text-green-700 transition-colors">
-                      +62 21 1234 5678
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name="map-pin" className="w-6 h-6 text-green-900" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-zinc-500 mb-1">Alamat</div>
-                    <p className="text-zinc-900">Jl. Pertanian No. 123, Jakarta Selatan 12345</p>
-                  </div>
-                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Chat Kami di WhatsApp</h3>
+                <p className="text-gray-500 mb-6">Respon cepat via pesan instan</p>
+
+                <span className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold group-hover:bg-emerald-700 transition-colors">
+                  Kirim Pesan Sekarang
+                </span>
+              </a>
+            </div>
+            <div className="flex flex-col md:w-1/2 p-8">
+              <h2 data-aos="fade-up" data-aos-delay="100" className="text-xs md:text-sm lg:text-base font-bold mb-2 text-emerald-600 uppercase tracking-wider mt-5">Contact</h2>
+              <div className="flex flex-col gap-2 items-start">
+                <h1 data-aos="fade-up" data-aos-delay="200" className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 text-emerald-600 uppercase">Get in Touch</h1>
+                <p data-aos="fade-up" data-aos-delay="300" className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  Punya pertanyaan atau butuh bantuan lebih lanjut? Kami siap membantu Anda. Silakan hubungi kami melalui WhatsApp atau isi formulir yang tersedia. Tim kami akan segera merespons pesan Anda.
+                </p>
               </div>
+              <CardContact />
             </div>
-            <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-zinc-900 mb-6">
-                Kirim Pesan
-              </h3>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm text-zinc-700 mb-2">Nama</label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 bg-white border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-900 focus:border-transparent"
-                    placeholder="Nama Anda"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-zinc-700 mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 bg-white border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-900 focus:border-transparent"
-                    placeholder="email@example.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-zinc-700 mb-2">Pesan</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-900 focus:border-transparent resize-none"
-                    placeholder="Tulis pesan Anda..."
-                  />
-                </div>
-                <button 
-                  type="submit"
-                  className="w-full px-6 py-3 bg-green-900 text-white rounded-lg font-medium hover:bg-green-800 transition-colors"
-                >
-                  Kirim Pesan
-                </button>
-              </form>
-            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-zinc-200 bg-zinc-50">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-zinc-600">
-              © 2026 Alpan Agro Jaya. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <a href="#about" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
-                Tentang
-              </a>
-              <a href="#services" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
-                Layanan
-              </a>
-              <a href="#contact" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
-                Kontak
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }
