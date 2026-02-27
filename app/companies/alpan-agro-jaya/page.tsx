@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
-            src="/assets/background.png"
+            src="/assets/images/alpanagrojaya.png"
             alt="Farm Background"
             fill
             className="object-cover"

@@ -14,7 +14,7 @@ const Footer = () => {
             <Link href="/" className="flex items-center gap-2 group">
               <div className="bg-white p-1 rounded-full">
                 {/* <Leaf size={20} className="text-white" /> */}
-                <Image src="/icon.png" alt="Logo" width={25} height={25} className="text-emerald-500" />
+                <Image src="/assets/images/logo-alpanagrojaya.png" alt="Logo" width={25} height={25} className="text-emerald-500" />
               </div>
               <span className="font-black text-xl tracking-tighter uppercase">
                 Alpan <span className="text-emerald-400">Agro</span>

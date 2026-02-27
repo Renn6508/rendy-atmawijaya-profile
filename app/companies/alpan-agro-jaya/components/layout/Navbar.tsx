@@ -38,7 +38,7 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="bg-white p-1 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
             {/* <Leaf size={22} className="text-white" /> */}
-            <Image src="/assets/icon.png" alt="Logo" width={25} height={25} className="text-emerald-500" />
+            <Image src="/assets/images/logo-alpanagrojaya.png" alt="Logo" width={25} height={25} className="text-emerald-500" />
           </div>
           <span
             className={`font-black text-xl lg:text-2xl tracking-tighter uppercase transition-colors duration-300 ${
