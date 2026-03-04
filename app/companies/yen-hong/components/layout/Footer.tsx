@@ -17,7 +17,7 @@ const Footer = () => {
                 <Image src="/assets/images/logo-alpanagrojaya.png" alt="Logo" width={25} height={25} className="text-emerald-500" />
               </div>
               <span className="font-black text-xl tracking-tighter uppercase">
-                Alpan <span className="text-emerald-400">Agro</span>
+                Yen <span className="text-emerald-400">Hong</span>
               </span>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
@@ -73,7 +73,7 @@ const Footer = () => {
         {/* COPYRIGHT BORDER */}
         <div className="pt-8 border-t border-white/10 text-center">
           <p className="text-[11px] uppercase tracking-[0.3em] text-gray-500">
-            Copyright © 2026 <span className="text-gray-400 font-bold">CV. Alpan Agro Jaya</span> | Developed by Rendy Atmawijaya
+            Copyright © 2026 <span className="text-gray-400 font-bold">PT. YEN HONG INTERNASIONAL</span> | Developed by Rendy Atmawijaya 
           </p>
         </div>
       </div>
