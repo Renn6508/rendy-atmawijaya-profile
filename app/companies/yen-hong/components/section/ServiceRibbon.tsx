@@ -31,14 +31,14 @@ export default function ServiceRibbon() {
                 onClick={() => setActiveIndex(index)}
                 className={`flex flex-col items-center justify-center py-3 md:py-6 px-1 md:px-4 text-center transition-all duration-300 cursor-pointer group border-r last:border-0 border-gray-100
                   ${isActive 
-                    ? "bg-[#064e3b] text-white scale-y-105 md:scale-y-110 shadow-lg z-10" 
-                    : "bg-white text-[#064e3b] hover:bg-gray-50"
+                    ? "bg-[#dc2626] text-white scale-y-105 md:scale-y-110 shadow-lg z-10" 
+                    : "bg-white text-[#dc2626] hover:bg-red-50"
                   }`}
               >
                 <item.icon 
                   size={16} 
                   className={`md:size-7 mb-1 md:mb-2 transition-transform duration-300 group-hover:-translate-y-0.5 
-                    ${isActive ? "text-[#10b981]" : "text-[#10b981]"}`} 
+                    ${isActive ? "text-red-200" : "text-red-500"}`} 
                 />
                 
                 <h3 className="font-extrabold uppercase text-[10px] md:text-[14px] tracking-tighter md:tracking-wider leading-none mb-0.5">

@@ -36,16 +36,16 @@ const Navbar = () => {
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="bg-white p-1 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
+          <div className="bg-white p-1 rounded-full group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-amber-500/20">
             {/* <Leaf size={22} className="text-white" /> */}
-            <Image src="/assets/images/logo-alpanagrojaya.png" alt="Logo" width={25} height={25} className="text-emerald-500" />
+            <Image src="/assets/images/logo-alpanagrojaya.png" alt="Logo" width={25} height={25} className="text-amber-500" />
           </div>
           <span
             className={`font-black text-xl lg:text-2xl tracking-tighter uppercase transition-colors duration-300 ${
-              isScrolled ? "text-emerald-900" : "text-white"
+              isScrolled ? "text-amber-900" : "text-white"
             }`}
           >
-            Berkat <span className="text-emerald-500">Jaya</span>
+            Berkat <span className="text-amber-500">Jaya</span>
           </span>
         </Link>
 
@@ -57,23 +57,23 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={`group relative text-xs lg:text-sm font-bold uppercase tracking-[0.15em] transition-colors ${
-                  isScrolled ? "text-gray-600 hover:text-emerald-600" : "text-white/90 hover:text-white"
+                  isScrolled ? "text-gray-600 hover:text-amber-600" : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-amber-500 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </div>
 
           <div className="flex items-center gap-3 border-l border-gray-300/30 pl-8">
-            <Link href="#kontak" className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-bold uppercase text-[10px] lg:text-xs tracking-widest transition-all shadow-md active:scale-95">
+            <Link href="#kontak" className="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2.5 rounded-lg font-bold uppercase text-[10px] lg:text-xs tracking-widest transition-all shadow-md active:scale-95">
               Hubungi Kami
             </Link>
             <button 
               className={`p-2.5 rounded-lg border transition-all active:scale-90 ${
                 isScrolled 
-                ? "border-emerald-200 text-emerald-600 hover:bg-emerald-50" 
+                ? "border-amber-200 text-amber-600 hover:bg-amber-50" 
                 : "border-white/50 text-white hover:bg-white/10"
               }`}
             >
@@ -88,9 +88,9 @@ const Navbar = () => {
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? (
-            <X size={28} className={isScrolled ? "text-emerald-900" : "text-white"} />
+            <X size={28} className={isScrolled ? "text-amber-900" : "text-white"} />
           ) : (
-            <Menu size={28} className={isScrolled ? "text-emerald-900" : "text-white"} />
+            <Menu size={28} className={isScrolled ? "text-amber-900" : "text-white"} />
           )}
         </button>
       </div>
@@ -106,17 +106,17 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-emerald-900 font-bold uppercase text-sm tracking-[0.2em] border-b border-gray-50 pb-2"
+              className="text-amber-900 font-bold uppercase text-sm tracking-[0.2em] border-b border-gray-50 pb-2"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>
           ))}
           <div className="flex flex-col gap-3 pt-2">
-            <Link href="#kontak" className="text-center bg-emerald-600 text-white py-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg">
+            <Link href="#kontak" className="text-center bg-amber-600 text-white py-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg">
               Hubungi Kami
             </Link>
-            <button className="flex items-center justify-center gap-2 border border-emerald-100 text-emerald-600 py-3 rounded-xl font-bold text-xs uppercase tracking-widest">
+            <button className="flex items-center justify-center gap-2 border border-amber-100 text-amber-600 py-3 rounded-xl font-bold text-xs uppercase tracking-widest">
               <Globe2 size={18} /> Indonesia
             </button>
           </div>

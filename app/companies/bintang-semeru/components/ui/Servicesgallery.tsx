@@ -63,7 +63,7 @@ const ServicesGallery = () => {
             key={item.id}
             onClick={() => setSelectedId(item.id)}
             className={`
-              relative group overflow-hidden rounded-3xl shadow-lg shadow-emerald-400/20 cursor-pointer
+              relative group overflow-hidden rounded-3xl shadow-lg shadow-rose-400/20 cursor-pointer
               h-[250px] md:h-full
               ${item.size} 
             `}
@@ -123,13 +123,13 @@ const ServicesGallery = () => {
               {/* 3. Area Konten: overflow-y-auto untuk teks yang panjang */}
               <div className="w-full md:w-1/2 flex flex-col overflow-y-auto custom-scrollbar">
                 <div className="p-6 md:p-10">
-                  <h3 className="text-2xl md:text-3xl font-bold text-emerald-700 mb-4 leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-bold text-rose-700 mb-4 leading-tight">
                     {selectedItem.title}
                   </h3>
 
                   {/* Wrapper teks agar jarak antar paragraf rapi */}
                   <div className="space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
-                    <p className="font-semibold text-emerald-600/80">{selectedItem.desc}</p>
+                    <p className="font-semibold text-rose-600/80">{selectedItem.desc}</p>
 
                     {/* Simulasi deskripsi panjang */}
                     <p>{selectedItem.longDesc}</p>
@@ -147,7 +147,7 @@ const ServicesGallery = () => {
 
                   {/* Footer Modal (Tetap di dalam scroll area agar tidak menutupi teks) */}
                   <div className="mt-10 pt-6 border-t border-gray-100">
-                    <button className="w-full bg-emerald-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all hover:shadow-lg active:scale-95">
+                    <button className="w-full bg-rose-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-rose-700 transition-all hover:shadow-lg active:scale-95">
                       Hubungi Kami
                     </button>
                   </div>

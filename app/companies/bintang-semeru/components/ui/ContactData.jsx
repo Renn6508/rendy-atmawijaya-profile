@@ -6,11 +6,11 @@ import { Phone, Mail, MapPin, Send, Instagram } from 'lucide-react';
 
 const CardContact = ({ icon: Icon, label, value }) => (
   <div data-aos="fade-up" data-aos-delay="500" className="flex gap-4 items-start group p-2">
-    <div className="bg-emerald-600 w-12 h-12 flex items-center justify-center rounded-xl shadow-sm group-hover:scale-110 transition-transform duration-200 shrink-0">
+    <div className="bg-rose-600 w-12 h-12 flex items-center justify-center rounded-xl shadow-sm group-hover:scale-110 transition-transform duration-200 shrink-0">
       <Icon className="text-white w-6 h-6" />
     </div>
     <div className="flex flex-col min-w-0"> 
-      <span className="text-[10px] md:text-xs font-bold text-emerald-600 uppercase tracking-[0.15em] leading-none">
+      <span className="text-[10px] md:text-xs font-bold text-rose-600 uppercase tracking-[0.15em] leading-none">
         {label}
       </span>
       <p className="text-sm font-semibold text-gray-800 mt-1">

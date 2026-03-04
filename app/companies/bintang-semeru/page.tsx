@@ -36,18 +36,18 @@ export default function Home() {
             priority
           />
           <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#064e3b] via-transparent to-transparent opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#4c0519] via-transparent to-transparent opacity-90" />
         </div>
 
         <div className="container mx-auto px-6 z-10 relative">
           <div className="max-w-3xl">
             {/* Ukuran teks adaptif: Kecil di HP, Besar di Desktop */}
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.2em] mb-4 text-emerald-300 uppercase">
-              UD. Bintang Semeru
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.2em] mb-4 text-rose-300 uppercase">
+              PT. BINTANG SEMERU
             </h2>
             <h1 className="text-3xl sm:text-4xl md:text-6xl text-white mb-6 leading-tight font-bold uppercase">
-              Solusi Agribisnis <br className="hidden md:block" />
-              <span className="text-emerald-400">Hulu ke Hilir</span>
+              Cahaya untuk Kemajuan <br className="hidden md:block" />
+              <span className="text-rose-400">Digital</span>
             </h1>
             <p className="text-gray-200 text-sm md:text-lg mb-8 max-w-2xl leading-relaxed">
               Meningkatkan efisiensi produk pertanian lokal dengan sistem terintegrasi,
@@ -56,7 +56,7 @@ export default function Home() {
 
             {/* Tombol: Full width di HP, Auto di Desktop */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#layanan" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded font-bold uppercase tracking-wider transition-all text-sm">
+              <Link href="#layanan" className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-3 rounded font-bold uppercase tracking-wider transition-all text-sm">
                 Layanan Kami
               </Link>
               <Link href="#visi-misi" className="border border-white/30 px-8 py-3 rounded font-bold hover:bg-white/10 uppercase text-sm tracking-wider transition-all">
@@ -74,16 +74,16 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-8 md:mb-14">
             <div className="flex items-center gap-4 mb-3">
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
-              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
+              <span className="text-rose-600 font-bold tracking-[0.3em] text-xs uppercase">
                 Who We Are
               </span>
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
-              Tentang <span className="text-emerald-600">Kami</span>
+              Tentang <span className="text-rose-600">Kami</span>
             </h2>
-            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+            <div className="mt-6 w-16 h-1 bg-rose-600 rounded-full"></div>
           </div>
           <AboutContent />
         </div>
@@ -97,26 +97,26 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center mb-4 md:mb-8">
             <div className="flex items-center gap-4 mb-3">
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
-              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
+              <span className="text-rose-600 font-bold tracking-[0.3em] text-xs uppercase">
                 Focus & Goals
               </span>
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
-              Visi & <span className="text-emerald-600">Misi Kami</span>
+              Visi & <span className="text-rose-600">Misi Kami</span>
             </h2>
-            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+            <div className="mt-6 w-16 h-1 bg-rose-600 rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            <div data-aos="fade-up" className="lg:col-span-5 bg-emerald-600 rounded-3xl p-8 md:p-12 text-white shadow-xl shadow-emerald-200 relative overflow-hidden group">
+            <div data-aos="fade-up" className="lg:col-span-5 bg-rose-600 rounded-3xl p-8 md:p-12 text-white shadow-xl shadow-rose-200 relative overflow-hidden group">
               <Target className="absolute -bottom-6 -right-6 text-white/10 group-hover:scale-110 transition-transform duration-500" size={180} />
 
               <div className="relative z-10">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-8">
                   <Target className="text-white" size={28} />
                 </div>
-                <h3 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-emerald-100">Visi Kami</h3>
+                <h3 className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-rose-100">Visi Kami</h3>
                 <p className="text-xl md:text-2xl font-bold leading-relaxed mb-6">
                   "Meningkatkan Efisiensi Produk Industri Hulu (Petani) dan Service yang memuaskan Industri Hilir (Client)"
                 </p>
@@ -124,10 +124,10 @@ export default function Home() {
             </div>
 
             {/* --- KARTU MISI (Dibuat Terang dengan Aksen List Berwarna) --- */}
-            <div data-aos="fade-up" data-aos-delay="100" className="lg:col-span-7 bg-white border-2 border-emerald-400 rounded-3xl p-8 md:p-12 shadow-sm relative">
+            <div data-aos="fade-up" data-aos-delay="100" className="lg:col-span-7 bg-white border-2 border-rose-400 rounded-3xl p-8 md:p-12 shadow-sm relative">
               <div className="flex items-center gap-4 mb-10">
-                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center">
-                  <ShieldCheck className="text-emerald-600" size={28} />
+                <div className="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center">
+                  <ShieldCheck className="text-rose-600" size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 uppercase tracking-tight">Misi Strategis</h3>
               </div>
@@ -139,9 +139,9 @@ export default function Home() {
                   { title: "Analisis", desc: "Strategi pemasaran tepat berdasarkan tren pasar terkini." },
                   { title: "Pemasaran", desc: "Distribusi produk melalui saluran daring maupun luring." }
                 ].map((item, i) => (
-                  <div key={i} className="relative pl-6 border-l-2 border-emerald-100 hover:border-emerald-500 transition-colors group">
-                    <span className="absolute -left-[2px] top-0 h-0 w-[2px] bg-emerald-500 group-hover:h-full transition-all duration-300"></span>
-                    <h4 className="font-bold text-emerald-600 text-sm uppercase mb-1">{item.title}</h4>
+                  <div key={i} className="relative pl-6 border-l-2 border-rose-100 hover:border-rose-500 transition-colors group">
+                    <span className="absolute -left-[2px] top-0 h-0 w-[2px] bg-rose-500 group-hover:h-full transition-all duration-300"></span>
+                    <h4 className="font-bold text-rose-600 text-sm uppercase mb-1">{item.title}</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
@@ -155,22 +155,22 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-4 md:mb-8">
             <div className="flex items-center gap-4 mb-3">
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
-              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
+              <span className="text-rose-600 font-bold tracking-[0.3em] text-xs uppercase">
                 What We Do
               </span>
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
-              Layanan <span className="text-emerald-600">Unggulan</span>
+              Layanan <span className="text-rose-600">Unggulan</span>
             </h2>
-            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+            <div className="mt-6 w-16 h-1 bg-rose-600 rounded-full"></div>
           </div>
           <ServicesGallery />
         </div>
       </section>
 
-      {/* <section id="partnership" className="pt-48 md:pt-32 pb-20 bg-emerald-700"> 
+      {/* <section id="partnership" className="pt-48 md:pt-32 pb-20 bg-rose-700"> 
        <div className="container mx-auto px-6">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-10 text-white uppercase text-center">
             ─── Partnership ───
@@ -183,16 +183,16 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="flex flex-col items-center text-center mb-4 md:mb-8">
             <div className="flex items-center gap-4 mb-3">
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
-              <span className="text-emerald-600 font-bold tracking-[0.3em] text-xs uppercase">
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
+              <span className="text-rose-600 font-bold tracking-[0.3em] text-xs uppercase">
                 Get In Touch
               </span>
-              <div className="w-8 h-[2px] bg-emerald-500/50"></div>
+              <div className="w-8 h-[2px] bg-rose-500/50"></div>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight">
-              Hubungi <span className="text-emerald-600">Tim Kami</span>
+              Hubungi <span className="text-rose-600">Tim Kami</span>
             </h2>
-            <div className="mt-6 w-16 h-1 bg-emerald-600 rounded-full"></div>
+            <div className="mt-6 w-16 h-1 bg-rose-600 rounded-full"></div>
           </div>
           <div className="flex flex-col md:flex-row max-w-6xl mx-auto items-center">
 
@@ -202,15 +202,15 @@ export default function Home() {
                 href="https://wa.me/6282277888936?text=Halo%20Admin,%20saya%20ingin%20bertanya%20mengenai%20layanan%20Anda."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative overflow-hidden bg-white p-10 rounded-3xl shadow-lg border border-emerald-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center"
+                className="group relative overflow-hidden bg-white p-10 rounded-3xl shadow-lg border border-rose-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center"
               >
                 {/* Dekorasi Background */}
-                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-50 rounded-full transition-transform group-hover:scale-150 duration-500"></div>
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-rose-50 rounded-full transition-transform group-hover:scale-150 duration-500"></div>
 
                 {/* Icon WhatsApp */}
-                <div className="relative z-10 bg-emerald-100 p-5 rounded-2xl mb-6 group-hover:bg-emerald-500 transition-colors duration-300">
+                <div className="relative z-10 bg-rose-100 p-5 rounded-2xl mb-6 group-hover:bg-rose-500 transition-colors duration-300">
                   <svg
-                    className="w-12 h-12 text-emerald-600 group-hover:text-white"
+                    className="w-12 h-12 text-rose-600 group-hover:text-white"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -220,15 +220,15 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">Chat Kami di WhatsApp</h3>
                 <p className="text-gray-500 mb-6">Respon cepat via pesan instan</p>
 
-                <span className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold group-hover:bg-emerald-700 transition-colors">
+                <span className="bg-rose-600 text-white px-8 py-3 rounded-full font-semibold group-hover:bg-rose-700 transition-colors">
                   Kirim Pesan Sekarang
                 </span>
               </a>
             </div>
             <div className="flex flex-col md:w-1/2 p-8">
-              <h2 data-aos="fade-up" data-aos-delay="100" className="text-xs md:text-sm lg:text-base font-bold mb-2 text-emerald-600 uppercase tracking-wider mt-5">Contact</h2>
+              <h2 data-aos="fade-up" data-aos-delay="100" className="text-xs md:text-sm lg:text-base font-bold mb-2 text-rose-600 uppercase tracking-wider mt-5">Contact</h2>
               <div className="flex flex-col gap-2 items-start">
-                <h1 data-aos="fade-up" data-aos-delay="200" className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 text-emerald-600 uppercase">Get in Touch</h1>
+                <h1 data-aos="fade-up" data-aos-delay="200" className="text-xl md:text-2xl lg:text-3xl font-bold mb-5 text-rose-600 uppercase">Get in Touch</h1>
                 <p data-aos="fade-up" data-aos-delay="300" className="text-sm md:text-base text-gray-600 leading-relaxed">
                   Punya pertanyaan atau butuh bantuan lebih lanjut? Kami siap membantu Anda. Silakan hubungi kami melalui WhatsApp atau isi formulir yang tersedia. Tim kami akan segera merespons pesan Anda.
                 </p>
