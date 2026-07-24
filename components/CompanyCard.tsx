@@ -20,7 +20,7 @@ export default function CompanyCard({ company, index }: CompanyCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <Link
-        href={`/companies/${company.id}`}
+        href={`/${company.id}`}
         className="group block bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-2xl overflow-hidden hover:border-zinc-400 dark:hover:border-zinc-500 hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300"
       >
         {/* Logo Section */}
