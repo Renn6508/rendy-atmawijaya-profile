@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ChevronDown, ArrowRight, Sparkles, Menu, Mail, MapPin, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import CompanyCard from '@/components/CompanyCard';
@@ -35,6 +35,13 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  // Hanya jalankan animasi orb blur saat hero section terlihat di layar.
+  // Ini mencegah 3 animasi infinite + blur (operasi GPU paling berat) terus
+  // berjalan di background sepanjang sesi setelah user scroll ke bawah —
+  // penyebab utama nge-lag di Android low-end. Tampilan saat hero terlihat
+  // tetap sama persis, hanya berhenti "diam-diam" saat tidak terlihat.
+  const isHeroInView = useInView(heroRef, { margin: '200px' });
 
   return (
     <>
@@ -105,12 +112,12 @@ export default function Home() {
           
           {/* Enhanced Gradient Orbs */}
           <motion.div
-            animate={{
+            animate={isHeroInView ? {
               scale: [1, 1.2, 1],
               opacity: [0.15, 0.25, 0.15],
               x: [0, 50, 0],
               y: [0, 30, 0],
-            }}
+            } : undefined}
             transition={{
               duration: 12,
               repeat: Infinity,
@@ -119,12 +126,12 @@ export default function Home() {
             className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10 rounded-full blur-3xl"
           />
           <motion.div
-            animate={{
+            animate={isHeroInView ? {
               scale: [1.2, 1, 1.2],
               opacity: [0.15, 0.25, 0.15],
               x: [0, -50, 0],
               y: [0, -30, 0],
-            }}
+            } : undefined}
             transition={{
               duration: 12,
               repeat: Infinity,
@@ -134,12 +141,12 @@ export default function Home() {
             className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/20 via-red-500/20 to-pink-500/20 dark:from-orange-500/10 dark:via-red-500/10 dark:to-pink-500/10 rounded-full blur-3xl"
           />
           <motion.div
-            animate={{
+            animate={isHeroInView ? {
               scale: [1, 1.3, 1],
               opacity: [0.1, 0.2, 0.1],
               x: [0, -30, 0],
               y: [0, 50, 0],
-            }}
+            } : undefined}
             transition={{
               duration: 15,
               repeat: Infinity,
@@ -323,14 +330,17 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
                   alt="Team collaboration"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
                 <div className="absolute bottom-8 left-8 text-white">
                   <motion.div
-                    animate={{
+                    whileInView={{
                       scale: [1, 1.05, 1],
                     }}
+                    viewport={{ once: false, amount: 0.5 }}
                     transition={{
                       duration: 3,
                       repeat: Infinity,
@@ -489,8 +499,10 @@ export default function Home() {
               >
                 {/* Ganti URL gambar di bawah dengan foto profesional Anda */}
                 <img
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80"
                   alt="Founder Portrait"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 {/* Dark gradient overlay for text readability */}
@@ -579,6 +591,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
                   alt="Modern office workspace"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -600,6 +614,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80"
                   alt="Business meeting"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
@@ -616,6 +632,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80"
                   alt="City skyline"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
@@ -632,6 +650,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80"
                   alt="Team collaboration"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -653,6 +673,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80"
                   alt="Data analytics"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
@@ -669,6 +691,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80"
                   alt="Professional team"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
@@ -685,6 +709,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80"
                   alt="Creative workspace"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -730,6 +756,8 @@ export default function Home() {
                   <img
                     src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80"
                     alt="Innovation"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
@@ -757,6 +785,8 @@ export default function Home() {
                   <img
                     src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
                     alt="Team Excellence"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
@@ -784,6 +814,8 @@ export default function Home() {
                   <img
                     src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80"
                     alt="Quality Assurance"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
