@@ -110,50 +110,22 @@ export default function Home() {
             <div className="absolute inset-0 bg-[radial-gradient(circle,#00000008_1px,transparent_1px)] dark:bg-[radial-gradient(circle,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px]" />
           </div>
           
-          {/* Enhanced Gradient Orbs */}
+          {/* Gradient Orb — dikurangi dari 3 jadi 1, dan animasi `scale` dihapus
+              karena scale + blur bareng adalah kombinasi termahal untuk GPU
+              compositor di HP low-end. Sisa animasi cuma opacity + posisi
+              (murah, tetap kelihatan "hidup" tapi jauh lebih ringan). */}
           <motion.div
             animate={isHeroInView ? {
-              scale: [1, 1.2, 1],
-              opacity: [0.15, 0.25, 0.15],
-              x: [0, 50, 0],
-              y: [0, 30, 0],
+              opacity: [0.15, 0.22, 0.15],
+              x: [0, 30, 0],
+              y: [0, 20, 0],
             } : undefined}
             transition={{
-              duration: 12,
+              duration: 14,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
             className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={isHeroInView ? {
-              scale: [1.2, 1, 1.2],
-              opacity: [0.15, 0.25, 0.15],
-              x: [0, -50, 0],
-              y: [0, -30, 0],
-            } : undefined}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: 2,
-            }}
-            className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/20 via-red-500/20 to-pink-500/20 dark:from-orange-500/10 dark:via-red-500/10 dark:to-pink-500/10 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={isHeroInView ? {
-              scale: [1, 1.3, 1],
-              opacity: [0.1, 0.2, 0.1],
-              x: [0, -30, 0],
-              y: [0, 50, 0],
-            } : undefined}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: 4,
-            }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-indigo-500/15 dark:from-cyan-500/8 dark:via-blue-500/8 dark:to-indigo-500/8 rounded-full blur-3xl"
           />
 
           <motion.div
